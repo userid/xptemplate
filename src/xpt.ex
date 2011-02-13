@@ -50,19 +50,24 @@ dodist () {
 
     find -name "test.page*" | xargs rm
 
-    for file in `find plugin/ -name *.vim`;do
+    for file in `find {plugin,autoload}/ -name "*.vim"`;do
 
         if [[ $file == "debug.vim" ]];then
             continue
         fi
 
-        echo remove Logs/Comments/Empty_Lines from $file
+        echo Join splitted lines
+        echo Remove Logs/Comments/Empty_Lines from $file
 
         grep -v "call s:log.\(Log\|Debug\)(" $file |\
             grep -v "^\s*Assert " |\
             grep -v "^\s*\"" |\
             grep -v "^\s*$" |\
-            sed 's/"\s*{{{//; s/"\s*}}}//' > .tmp
+            sed 's/"\s*{{{//; s/"\s*}}}//' |\
+            awk -f cleanspace.awk |\
+            awk -f joinlines.awk |\
+            awk -f formatindent.awk \
+            > .tmp
 
         mv .tmp $file
     done
@@ -83,7 +88,6 @@ dodist () {
 
     cd xpt
     tar -czf ../xpt-$ver.tgz *
-
     cd $CurrentDir
 }
 
@@ -95,11 +99,11 @@ dodist dist-sub
 
 exit
 
-# vim: set ts=64 :
 # __TO_REMOVE__
 plugin/xptemplateTest.vim
 plugin/xptTestKey.vim
 plugin/xptemplate.importer.vim
+*.awk	\
 xpt.testall.*
 xpt.ex
 genfile.vim
