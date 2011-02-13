@@ -24,16 +24,13 @@ set cpo-=< cpo+=B
 
 " TODO popup fix:select it if strictly matched
 
-runtime plugin/debug.vim
-runtime plugin/classes/SettingSwitch.vim
-runtime plugin/classes/MapSaver.vim
 
 
 exe XPT#let_sid
 
 
-let s:log = CreateLogger( 'warn' )
-let s:log = CreateLogger( 'debug' )
+let s:log = xpt#debug#Logger( 'warn' )
+" let s:log = xpt#debug#Logger( 'debug' )
 
 fun! s:SetIfNotExist(k, v) "{{{
     if !exists(a:k)
@@ -429,8 +426,8 @@ fun! s:_InitBuffer() "{{{
         return
     endif
 
-    let b:_xpp_map_saver = g:MapSaver.New( 1 )
-    call b:_xpp_map_saver.AddList( 
+    let b:_xpp_map_saver = xpt#msvr#New( 1 )
+    call xpt#msvr#AddList( b:_xpp_map_saver, 
           \ 'i_<UP>', 
           \ 'i_<DOWN>', 
           \
@@ -448,8 +445,8 @@ fun! s:_InitBuffer() "{{{
     " NOTE:  user-defined pum does not accept non-keywords char. pressing
     "       non-keywords char make pum disappear.
 
-    let b:_xpp_setting_switch = g:SettingSwitch.New()
-    call b:_xpp_setting_switch.AddList( 
+    let b:_xpp_setting_switch = xpt#stsw#New()
+    call xpt#stsw#AddList( b:_xpp_setting_switch, 
           \ [ '&l:cinkeys', '' ], 
           \ [ '&l:indentkeys', '' ], 
           \ [ '&completeopt', 'menu,longest,menuone' ], 
@@ -959,7 +956,7 @@ fun! s:ApplyMapAndSetting() "{{{
 
     call s:log.Debug( 'ApplyMapAndSetting' )
 
-    call b:_xpp_map_saver.Save()
+    call xpt#msvr#Save( b:_xpp_map_saver )
 
 
     let sess = b:__xpp_current_session
@@ -993,7 +990,7 @@ fun! s:ApplyMapAndSetting() "{{{
         au InsertEnter * call XPPend()
     augroup END
 
-    call b:_xpp_setting_switch.Switch()
+    call xpt#stsw#Switch( b:_xpp_setting_switch )
 
     if exists( ':AcpLock' )
         AcpLock
@@ -1019,8 +1016,8 @@ fun! s:ClearMapAndSetting() "{{{
         " let 
 
 
-    call b:_xpp_map_saver.Restore()
-    call b:_xpp_setting_switch.Restore()
+    call xpt#msvr#Restore( b:_xpp_map_saver )
+    call xpt#stsw#Restore( b:_xpp_setting_switch )
     if exists( ':AcpUnlock' )
         try
             AcpUnlock
