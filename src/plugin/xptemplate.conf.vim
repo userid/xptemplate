@@ -8,63 +8,59 @@ let s:oldcpo = &cpo
 set cpo-=< cpo+=B
 
 
-runtime plugin/debug.vim
-
-let s:escapeHead   = '\v(\\*)\V'
-let s:unescapeHead = '\v(\\*)\1\\?\V'
-let s:ep           = '\%(' . '\%(\[^\\]\|\^\)' . '\%(\\\\\)\*' . '\)' . '\@<='
+exe XPT#importConst
 
 
+let g:xptemplate_always_compile = 1
 
 
-
-" call XPT#setIfNotExist('g:xptemplate_show_stack'	, 1 )
-" call XPT#setIfNotExist('g:xptemplate_abbr_mode'	, 0 )
-" call XPT#setIfNotExist('g:xptemplate_crash'	, '<C-g>' )
-" call XPT#setIfNotExist('g:xptemplate_nav_clear_next'	, '<cr>' )
-" call XPT#setIfNotExist('g:xptemplate_map'	, '' )
-
-call XPT#setIfNotExist('g:xptemplate_key'	, '<C-\>' )
-call XPT#setIfNotExist('g:xptemplate_key_force_pum'	, '<C-r>' . g:xptemplate_key )
-call XPT#setIfNotExist('g:xptemplate_key_pum_only'	, '<C-r><C-r>' . g:xptemplate_key )
-
-
-call XPT#setIfNotExist('g:xptemplate_nav_next'	, '<Tab>' )
-call XPT#setIfNotExist('g:xptemplate_nav_prev'	, '<S-Tab>' )
-call XPT#setIfNotExist('g:xptemplate_nav_cancel'	, '<cr>' )
-call XPT#setIfNotExist('g:xptemplate_goback'	, '<C-g>' )
-call XPT#setIfNotExist('g:xptemplate_to_right'	, '<C-l>' )
 
 " TODO doc it
-call XPT#setIfNotExist('g:xptemplate_key_2'	, g:xptemplate_key )
-call XPT#setIfNotExist('g:xptemplate_nav_next_2'	, g:xptemplate_nav_next )
-call XPT#setIfNotExist('g:xptemplate_fallback'	, '<Plug>XPTrawKey' )
+call XPT#default('g:xptemplate_always_compile'	, 1 )
+" call XPT#default('g:xptemplate_abbr_mode'	, 0 )
+" call XPT#default('g:xptemplate_crash'	, '<C-g>' )
+" call XPT#default('g:xptemplate_nav_clear_next'	, '<cr>' )
+" call XPT#default('g:xptemplate_map'	, '' )
+call XPT#default('g:xptemplate_key'	, '<C-\>' )
+call XPT#default('g:xptemplate_key_force_pum'	, '<C-r>' . g:xptemplate_key )
+call XPT#default('g:xptemplate_key_pum_only'	, '<C-r><C-r>' . g:xptemplate_key )
+
+
+call XPT#default('g:xptemplate_nav_next'	, '<Tab>' )
+call XPT#default('g:xptemplate_nav_prev'	, '<S-Tab>' )
+call XPT#default('g:xptemplate_nav_cancel'	, '<cr>' )
+call XPT#default('g:xptemplate_goback'	, '<C-g>' )
+call XPT#default('g:xptemplate_to_right'	, '<C-l>' )
+
+" TODO doc it
+call XPT#default('g:xptemplate_key_2'	, g:xptemplate_key )
+call XPT#default('g:xptemplate_nav_next_2'	, g:xptemplate_nav_next )
+call XPT#default('g:xptemplate_fallback'	, '<Plug>XPTrawKey' )
 
 
 " doc it
-call XPT#setIfNotExist('g:xptemplate_fallback_condition'	, '\V\c<Tab>' )
+call XPT#default('g:xptemplate_fallback_condition'	, '\V\c<Tab>' )
 " doc it
-call XPT#setIfNotExist('g:xptemplate_move_even_with_pum'	, g:xptemplate_nav_next !=? '<Tab>' )
-call XPT#setIfNotExist('g:xptemplate_always_show_pum'	, 0 )
-call XPT#setIfNotExist('g:xptemplate_minimal_prefix'	, 1 )
-call XPT#setIfNotExist('g:xptemplate_pum_tab_nav'	, 0 )
-call XPT#setIfNotExist('g:xptemplate_strict'	, 2 )
-call XPT#setIfNotExist('g:xptemplate_highlight'	, 'next' )
-call XPT#setIfNotExist('g:xptemplate_highlight_nested'	, 0 )
-call XPT#setIfNotExist('g:xptemplate_brace_complete'	, 0 )
-call XPT#setIfNotExist('g:xptemplate_strip_left'	, 1 )
-call XPT#setIfNotExist('g:xptemplate_fix'	, 1 )
-call XPT#setIfNotExist('g:xptemplate_ph_pum_accept_empty'	, 1 )
+call XPT#default('g:xptemplate_move_even_with_pum'	, g:xptemplate_nav_next !=? '<Tab>' )
+call XPT#default('g:xptemplate_always_show_pum'	, 0 )
+call XPT#default('g:xptemplate_minimal_prefix'	, 1 )
+call XPT#default('g:xptemplate_pum_tab_nav'	, 0 )
+call XPT#default('g:xptemplate_strict'	, 2 )
+call XPT#default('g:xptemplate_highlight'	, 'next' )
+call XPT#default('g:xptemplate_highlight_nested'	, 0 )
+call XPT#default('g:xptemplate_brace_complete'	, 0 )
+call XPT#default('g:xptemplate_strip_left'	, 1 )
+call XPT#default('g:xptemplate_ph_pum_accept_empty'	, 1 )
 
 
-call XPT#setIfNotExist('g:xptemplate_vars'	, '' )
-call XPT#setIfNotExist('g:xptemplate_bundle'	, '' )
-call XPT#setIfNotExist('g:xptemplate_snippet_folders'	, [] )
+call XPT#default('g:xptemplate_vars'	, '' )
+call XPT#default('g:xptemplate_bundle'	, '' )
+call XPT#default('g:xptemplate_snippet_folders'	, [] )
 
 
 
 " for test script
-call XPT#setIfNotExist('g:xpt_post_action', '')
+call XPT#default('g:xpt_post_action', '')
 
 
 if type( g:xptemplate_minimal_prefix ) == type( '' )
@@ -84,7 +80,7 @@ if type( g:xptemplate_minimal_prefix ) == type( '' )
     endif
 endif
 
-call XPT#setIfNotExist( 'g:xptemplate_minimal_prefix_nested', g:xptemplate_minimal_prefix )
+call XPT#default( 'g:xptemplate_minimal_prefix_nested', g:xptemplate_minimal_prefix )
 
 
 
@@ -181,7 +177,7 @@ endif
 
 
 " parse personal variable
-let s:pvs = split(g:xptemplate_vars, '\V'.s:ep.'&')
+let s:pvs = split(g:xptemplate_vars, '\V'.s:nonEscaped.'&')
 
 for s:v in s:pvs
   let s:key = matchstr(s:v, '\V\^\[^=]\*\ze=')
@@ -224,7 +220,7 @@ fun! g:XPTaddBundle(ft, bundle) "{{{
     let g:xptBundle[ a:ft ][ a:bundle ] = 1
 
     " TODO NOTE: problem: last snipFileScop is used in XPTembed. any side effect?
-    call XPTembed( a:ft . '/' . a:bundle )
+    call xpt#parser#Embed( a:ft . '/' . a:bundle )
 endfunction "}}}
 
 fun! g:XPTloadBundle(ft, bundle) "{{{
@@ -239,12 +235,15 @@ endfunction "}}}
 
 
 
+
 fun! XPTfiletypeInit() "{{{
 
     " Ftplugin may be loaded before 'BufEnter' event
     if !exists( 'b:xptemplateData' )
         call XPTemplateInit()
     endif
+
+    call xpt#parser#LoadSnippets()
 
     let x = b:xptemplateData
 
@@ -280,7 +279,7 @@ augroup XPTftInit
 augroup END
 
 
-" <C-v><C-v><BS> force pum to close
+" <C-v><C-v><BS> forces pum to close
 
 if stridx( g:xptemplate_brace_complete, '(' ) >= 0
     inoremap <silent> ( <C-v><C-v><BS><C-r>=XPTtgr('(',{'noliteral':1,'k':'('})<cr>
@@ -349,30 +348,6 @@ endfunction "}}}
 
 
 
-" TODO noneed to check and fix settings. they have been done in SettingSwitch
-
-" check critical setting:
-"
-" backspace >2 or with start
-" nocompatible
-
-let bs=&bs
-
-if bs != 2 && bs !~ "start"
-    if g:xptemplate_fix
-        set bs=2
-    else
-        echom "'backspace' option must be set with 'start'. set bs=2 or let g:xptemplate_fix=1 to fix it"
-    endif
-endif
-
-if &compatible == 1
-    if g:xptemplate_fix
-        set nocompatible
-    else
-        echom "'compatible' option must be set. set compatible or let g:xptemplate_fix=1 to fix it"
-    endif
-endif
 
 let &cpo = s:oldcpo
 
