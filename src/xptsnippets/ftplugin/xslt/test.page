@@ -114,17 +114,13 @@ WRAPPED_TEXT_line2`
 
 
 
-<a href="href">WRAPPED_TEXT
-WRAPPED_TEXT_line2</a>
+    <a href="href"></a>
 
-<a href="href_TYPED">WRAPPED_TEXT
-WRAPPED_TEXT_line2</a> b
+    <a href="href_TYPED"></a> b
 
-`<a href="href">WRAPPED_TEXT
-WRAPPED_TEXT_line2</a>^
+    `<a href="href"></a>^
 
-a <a href="href">WRAPPED_TEXT
-WRAPPED_TEXT_line2</a>
+    a <a href="href"></a>
 
 
     <!--  -------------apply---------------      -->
@@ -394,21 +390,13 @@ a <!--
 
 
 
-<div>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</div>
+<div></div>
 
-<div>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</div> b
+<div>content_TYPED</div> b
 
-`<div>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</div>^
+`<div></div>^
 
-a <div>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</div>
+a <div></div>
 
 
     <!--  -------------doctype--------------- -->
@@ -514,23 +502,19 @@ a <xsl:for-each select="match">
 
 
 <form action="action" method="GET" accept-charset="utf-8" enctype="multipart/form-data">
-    WRAPPED_TEXT
-    WRAPPED_TEXT_line2
+    
 </form>
 
 <form action="action_TYPED" method="GET" accept-charset="utf-8" enctype="multipart/form-data">
-    WRAPPED_TEXT
-    WRAPPED_TEXT_line2
+    
 </form> b
 
 `<form action="action" method="GET" accept-charset="utf-8" enctype="multipart/form-data">
-    WRAPPED_TEXT
-    WRAPPED_TEXT_line2
+    
 </form>^
 
 a <form action="action" method="GET" accept-charset="utf-8" enctype="multipart/form-data">
-    WRAPPED_TEXT
-    WRAPPED_TEXT_line2
+    
 </form>
 
 
@@ -539,21 +523,13 @@ a <form action="action" method="GET" accept-charset="utf-8" enctype="multipart/f
 
 
 
-<h1>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h1>
+<h1></h1>
 
-<h1>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h1> b
+<h1>content_TYPED</h1> b
 
-`<h1>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h1>^
+`<h1></h1>^
 
-a <h1>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h1>
+a <h1></h1>
 
 
     <!--  -------------h2---------------                                       -->
@@ -561,21 +537,13 @@ WRAPPED_TEXT_line2
 
 
 
-<h2>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h2>
+<h2></h2>
 
-<h2>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h2> b
+<h2>content_TYPED</h2> b
 
-`<h2>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h2>^
+`<h2></h2>^
 
-a <h2>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h2>
+a <h2></h2>
 
 
     <!--  -------------h3---------------                                       -->
@@ -583,21 +551,13 @@ WRAPPED_TEXT_line2
 
 
 
-<h3>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h3>
+<h3></h3>
 
-<h3>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h3> b
+<h3>content_TYPED</h3> b
 
-`<h3>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h3>^
+`<h3></h3>^
 
-a <h3>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h3>
+a <h3></h3>
 
 
     <!--  -------------h4---------------                                       -->
@@ -605,21 +565,13 @@ WRAPPED_TEXT_line2
 
 
 
-<h4>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h4>
+<h4></h4>
 
-<h4>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h4> b
+<h4>content_TYPED</h4> b
 
-`<h4>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h4>^
+`<h4></h4>^
 
-a <h4>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h4>
+a <h4></h4>
 
 
     <!--  -------------h5---------------                                       -->
@@ -627,21 +579,13 @@ WRAPPED_TEXT_line2
 
 
 
-<h5>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h5>
+<h5></h5>
 
-<h5>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h5> b
+<h5>content_TYPED</h5> b
 
-`<h5>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h5>^
+`<h5></h5>^
 
-a <h5>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h5>
+a <h5></h5>
 
 
     <!--  -------------h6---------------                                       -->
@@ -649,21 +593,13 @@ WRAPPED_TEXT_line2
 
 
 
-<h6>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h6>
+<h6></h6>
 
-<h6>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h6> b
+<h6>content_TYPED</h6> b
 
-`<h6>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h6>^
+`<h6></h6>^
 
-a <h6>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</h6>
+a <h6></h6>
 
 
     <!--  -------------head--------------- -->
@@ -780,21 +716,13 @@ a <xsl:if test="test">
 
 
 
-<iframe name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</iframe>
+<iframe name="name"></iframe>
 
-<iframe name="name_TYPED">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</iframe> b
+<iframe name="name_TYPED">content_TYPED</iframe> b
 
-`<iframe name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</iframe>^
+`<iframe name="name"></iframe>^
 
-a <iframe name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</iframe>
+a <iframe name="name"></iframe>
 
 
     <!--  -------------img--------------- -->
@@ -858,21 +786,13 @@ a <input type="text" name="name" value="value"/>
 
 
 
-<label for="which">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</label>
+<label for="which"></label>
 
-<label for="which_TYPED">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</label> b
+<label for="which_TYPED">content_TYPED</label> b
 
-`<label for="which">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</label>^
+`<label for="which"></label>^
 
-a <label for="which">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</label>
+a <label for="which"></label>
 
 
     <!--  -------------li---------------                                       -->
@@ -880,21 +800,13 @@ WRAPPED_TEXT_line2
 
 
 
-<li>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</li>
+<li></li>
 
-<li>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</li> b
+<li>content_TYPED</li> b
 
-`<li>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</li>^
+`<li></li>^
 
-a <li>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</li>
+a <li></li>
 
 
     <!--  -------------link---------------                               -->
@@ -930,21 +842,13 @@ WRAPPED_TEXT_line2
 
 
 
-<ol>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</ol>
+<ol></ol>
 
-<ol>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</ol> b
+<ol>content_TYPED</ol> b
 
-`<ol>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</ol>^
+`<ol></ol>^
 
-a <ol>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</ol>
+a <ol></ol>
 
 
     <!--  -------------option---------------                                           -->
@@ -952,21 +856,13 @@ WRAPPED_TEXT_line2
 
 
 
-<option value="value">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</option>
+<option value="value"></option>
 
-<option value="value_TYPED">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</option> b
+<option value="value_TYPED">content_TYPED</option> b
 
-`<option value="value">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</option>^
+`<option value="value"></option>^
 
-a <option value="value">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</option>
+a <option value="value"></option>
 
 
     <!--  -------------p---------------                                        -->
@@ -974,21 +870,13 @@ WRAPPED_TEXT_line2
 
 
 
-<p>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</p>
+<p></p>
 
-<p>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</p> b
+<p>content_TYPED</p> b
 
-`<p>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</p>^
+`<p></p>^
 
-a <p>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</p>
+a <p></p>
 
 
     <!--  -------------param---------------                           -->
@@ -1048,21 +936,13 @@ a <script language="javascript" type="text/javascript">
 
 
 
-<select name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</select>
+<select name="name"></select>
 
-<select name="name_TYPED">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</select> b
+<select name="name_TYPED">content_TYPED</select> b
 
-`<select name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</select>^
+`<select name="name"></select>^
 
-a <select name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</select>
+a <select name="name"></select>
 
 
     <!--  -------------sort--------------- -->
@@ -1157,21 +1037,13 @@ a <xsl:stylesheet version="1.0"
 
 
 
-<table>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</table>
+<table></table>
 
-<table>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</table> b
+<table>content_TYPED</table> b
 
-`<table>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</table>^
+`<table></table>^
 
-a <table>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</table>
+a <table></table>
 
 
     <!--  -------------td---------------                                       -->
@@ -1179,21 +1051,13 @@ WRAPPED_TEXT_line2
 
 
 
-<td>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</td>
+<td></td>
 
-<td>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</td> b
+<td>content_TYPED</td> b
 
-`<td>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</td>^
+`<td></td>^
 
-a <td>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</td>
+a <td></td>
 
 
     <!--  -------------template--------------- -->
@@ -1225,21 +1089,13 @@ a <xsl:template match="match">
 
 
 
-<textarea name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</textarea>
+<textarea name="name"></textarea>
 
-<textarea name="name_TYPED">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</textarea> b
+<textarea name="name_TYPED">content_TYPED</textarea> b
 
-`<textarea name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</textarea>^
+`<textarea name="name"></textarea>^
 
-a <textarea name="name">WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</textarea>
+a <textarea name="name"></textarea>
 
 
     <!--  -------------th---------------                                       -->
@@ -1247,21 +1103,13 @@ WRAPPED_TEXT_line2
 
 
 
-<th>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</th>
+<th></th>
 
-<th>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</th> b
+<th>content_TYPED</th> b
 
-`<th>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</th>^
+`<th></th>^
 
-a <th>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</th>
+a <th></th>
 
 
     <!--  -------------title---------------     -->
@@ -1283,21 +1131,13 @@ WRAPPED_TEXT_line2
 
 
 
-<tr>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</tr>
+<tr></tr>
 
-<tr>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</tr> b
+<tr>content_TYPED</tr> b
 
-`<tr>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</tr>^
+`<tr></tr>^
 
-a <tr>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</tr>
+a <tr></tr>
 
 
     <!--  -------------ul---------------                                       -->
@@ -1305,21 +1145,13 @@ WRAPPED_TEXT_line2
 
 
 
-<ul>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</ul>
+<ul></ul>
 
-<ul>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</ul> b
+<ul>content_TYPED</ul> b
 
-`<ul>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</ul>^
+`<ul></ul>^
 
-a <ul>WRAPPED_TEXT
-WRAPPED_TEXT_line2
-</ul>
+a <ul></ul>
 
 
     <!--  -------------valueof--------------- -->
@@ -1390,4 +1222,3 @@ WRAPPED_TEXT_line2}^
 
 a {WRAPPED_TEXT
 WRAPPED_TEXT_line2}
-

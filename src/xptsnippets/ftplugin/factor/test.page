@@ -123,20 +123,6 @@ ALIAS: newword_TYPED oldword b
 a ALIAS: newword oldword
 
 
-    /*  -------------arr--------------- */
-    /* { `cursor^ }                     */
-
-
-
-{  }
-
-{  } b
-
-`{  }^
-
-a {  }
-
-
     /*  -------------Author--------------- */
     /* `$author^                           */
 
@@ -151,115 +137,6 @@ drdr.xp b
 a drdr.xp
 
 
-    /*  -------------bi--------------- */
-    /* [ `first^ ] [ `cursor^ ] bi     */
-
-
-
-[ first ] [  ] bi
-
-[ first_TYPED ] [  ] bi b
-
-`[ first ] [  ] bi^
-
-a [ first ] [  ] bi
-
-
-    /*  -------------case---------------          */
-    /* { { `case^ [ `code^ ] }`...^               */
-    /*   { `case^ [ `code^ ] }`...^`default...{{^ */
-    /*   [ `cursor^ ]`}}^                         */
-    /* } case                                     */
-
-
-
-{ { case [ code ] }
-  { case [ code ] }
-    { case [ code ] }
-      { case [ code ] }
-      [  ]
-} case
-
-{ { case_TYPED [ code_TYPED ] }_TYPEDdefault_TYPED
-} case b
-
-`{ { case [ code ] }
-  { case [ code ] }
-    { case [ code ] }
-      { case [ code ] }
-      [  ]
-} case^
-
-a { { case [ code ] }
-  { case [ code ] }
-    { case [ code ] }
-      { case [ code ] }
-      [  ]
-} case
-
-
-    /*  -------------cleave--------------- */
-    /* { [ `code^ ]`...^                   */
-    /*   [ `code^ ]`...^                   */
-    /* } cleave                            */
-
-
-
-{ [ code ]
-  [ code ]
-    [ code ]
-      [ code ]
-} cleave
-
-{ [ code_TYPED ]_TYPED
-} cleave b
-
-`{ [ code ]
-  [ code ]
-    [ code ]
-      [ code ]
-} cleave^
-
-a { [ code ]
-  [ code ]
-    [ code ]
-      [ code ]
-} cleave
-
-
-    /*  -------------cond---------------              */
-    /* { { [ `cond^ ] [ `code^ ] }`...^               */
-    /*   { [ `cond^ ] [ `code^ ] }`...^`default...{{^ */
-    /*   [ `cursor^ ]`}}^                             */
-    /* } cond                                         */
-
-
-
-{ { [ cond ] [ code ] }
-  { [ cond ] [ code ] }
-    { [ cond ] [ code ] }
-      { [ cond ] [ code ] }
-      [  ]
-} cond
-
-{ { [ cond_TYPED ] [ code_TYPED ] }_TYPEDdefault_TYPED
-} cond b
-
-`{ { [ cond ] [ code ] }
-  { [ cond ] [ code ] }
-    { [ cond ] [ code ] }
-      { [ cond ] [ code ] }
-      [  ]
-} cond^
-
-a { { [ cond ] [ code ] }
-  { [ cond ] [ code ] }
-    { [ cond ] [ code ] }
-      { [ cond ] [ code ] }
-      [  ]
-} cond
-
-
     /*  -------------const--------------- */
     /* CONSTANT: `word^ `constantValue^   */
 
@@ -272,20 +149,6 @@ CONSTANT: word_TYPED constantValue b
 `CONSTANT: word constantValue^
 
 a CONSTANT: word constantValue
-
-
-    /*  -------------dip--------------- */
-    /* [ `cursor^ ] dip                 */
-
-
-
-[  ] dip
-
-[  ] dip b
-
-`[  ] dip^
-
-a [  ] dip
 
 
     /*  -------------Email--------------- */
@@ -316,18 +179,23 @@ test.page b
 a test.page
 
 
-    /*  -------------filter--------------- */
-    /* [ `cursor^ ] filter                 */
+    /*  -------------header--------------- */
+    /* USING: `imports^ ;                  */
+    /* IN:                                 */
 
 
 
-[  ] filter
+USING: imports ;
+IN: 
 
-[  ] filter b
+USING: imports_TYPED ;
+IN:  b
 
-`[  ] filter^
+`USING: imports ;
+IN: ^
 
-a [  ] filter
+a USING: imports ;
+IN: 
 
 
     /*  -------------if--------------- */
@@ -344,79 +212,18 @@ cond_TYPED [ then_TYPED ] [ else_TYPED ] if b
 a cond [ then ] [ else ] if
 
 
-    /*  -------------keep--------------- */
-    /* [ `cursor^ ] keep                 */
-
-
-
-[  ] keep
-
-[  ] keep b
-
-`[  ] keep^
-
-a [  ] keep
-
-
-    /*  -------------map--------------- */
-    /* [ `cursor^ ] map                 */
-
-
-
-[  ] map
-
-[  ] map b
-
-`[  ] map^
-
-a [  ] map
-
-
-    /*  -------------mod---------------    */
-    /* USING: kernel sequences accessors ; */
-    /* IN: `moduleName^                    */
-
-
-
-USING: kernel sequences accessors ;
-IN: src..home.xp.VCS.hg.bash.xp.vim.xp.plugins.extern.xpt.gitsvn.src.ftplugin.test
-
-USING: kernel sequences accessors ;
-IN: src..home.xp.VCS.hg.bash.xp.vim.xp.plugins.extern.xpt.gitsvn.src.ftplugin.test b
-
-`USING: kernel sequences accessors ;
-IN: src..home.xp.VCS.hg.bash.xp.vim.xp.plugins.extern.xpt.gitsvn.src.ftplugin.test^
-
-a USING: kernel sequences accessors ;
-IN: src..home.xp.VCS.hg.bash.xp.vim.xp.plugins.extern.xpt.gitsvn.src.ftplugin.test
-
-
-    /*  -------------quote--------------- */
-    /* [ `cursor^ ]                       */
-
-
-
-[  ]
-
-[  ] b
-
-`[  ]^
-
-a [  ]
-
-
     /*  -------------test--------------- */
-    /* { `ret^ } [ `test^ ] unit-test    */
+    /* [ `ret^ ] [ `test^ ] unit-test    */
 
 
 
-{ ret } [ test ] unit-test
+[ ret ] [ test ] unit-test
 
-{ ret_TYPED } [ test_TYPED ] unit-test b
+[ ret_TYPED ] [ test_TYPED ] unit-test b
 
-`{ ret } [ test ] unit-test^
+`[ ret ] [ test ] unit-test^
 
-a { ret } [ test ] unit-test
+a [ ret ] [ test ] unit-test
 
 
     /*  -------------times--------------- */
@@ -433,60 +240,28 @@ count_TYPED [ what_TYPED ] times b
 a count [ what ] times
 
 
-    /*  -------------tri---------------          */
-    /* [ `first^ ] [ `second^ ] [ `cursor^ ] tri */
+    /*  -------------word---------------              */
+    /* : `wordName^ ( `stackBefore^ -- `stackafter^ ) */
+    /*     `cursor^                                   */
+    /*     ;                                          */
 
 
 
-[ first ] [ second ] [  ] tri
+: wordName ( stackBefore -- stackafter )
+    
+    ;
 
-[ first_TYPED ] [ second_TYPED ] [  ] tri b
+    : wordName_TYPED ( stackBefore_TYPED -- stackafter_TYPED )
+        
+        ; b
 
-`[ first ] [ second ] [  ] tri^
+        `: wordName ( stackBefore -- stackafter )
+            
+            ;^
 
-a [ first ] [ second ] [  ] tri
-
-
-    /*  -------------unless--------------- */
-    /* [ `cursor^ ] unless                 */
-
-
-
-[  ] unless
-
-[  ] unless b
-
-`[  ] unless^
-
-a [  ] unless
-
-
-    /*  -------------vec--------------- */
-    /* V{ `cursor^ }                    */
-
-
-
-V{  }
-
-V{  } b
-
-`V{  }^
-
-a V{  }
-
-
-    /*  -------------when--------------- */
-    /* [ `cursor^ ] when                 */
-
-
-
-[  ] when
-
-[  ] when b
-
-`[  ] when^
-
-a [  ] when
+            a : wordName ( stackBefore -- stackafter )
+                
+                ;
 
 
     /*  -------------{_--------------- */
@@ -505,4 +280,3 @@ WRAPPED_TEXT_line2}^
 
 a {WRAPPED_TEXT
 WRAPPED_TEXT_line2}
-

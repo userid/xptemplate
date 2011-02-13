@@ -54,25 +54,25 @@ WRAPPED_TEXT_line2
 
 
 
-#ifdef symbol
+#ifdef SYMBOL
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol */
+#endif /* SYMBOL */
 
-#ifdef symbol_TYPED
+#ifdef SYMBOL_TYPED
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol_TYPED */ b
+#endif /* SYMBOL_TYPED */ b
 
-`#ifdef symbol
+`#ifdef SYMBOL
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol */^
+#endif /* SYMBOL */^
 
-a #ifdef symbol
+a #ifdef SYMBOL
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol */
+#endif /* SYMBOL */
 
 
     /*  -------------#ifndef--------------- */
@@ -82,25 +82,25 @@ WRAPPED_TEXT_line2
 
 
 
-#ifndef symbol
+#ifndef SYMBOL
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol */
+#endif /* SYMBOL */
 
-#ifndef symbol_TYPED
+#ifndef SYMBOL_TYPED
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol_TYPED */ b
+#endif /* SYMBOL_TYPED */ b
 
-`#ifndef symbol
+`#ifndef SYMBOL
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol */^
+#endif /* SYMBOL */^
 
-a #ifndef symbol
+a #ifndef SYMBOL
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol */
+#endif /* SYMBOL */
 
 
     /*  -------------#inc--------------- */
@@ -328,8 +328,8 @@ WRAPPED_TEXT_line2 */
 
 
     /*  -------------commentBlock--------------- */
-    /* `$_xCommentLeftWithoutMid^`$CM `cursor^   */
-    /* `$_xCommentMidIndent$CR^                  */
+    /* `$CL_STRIP^`$CM `cursor^                  */
+    /* `$_xOFFSET$CM_OFFSET$CR^                  */
 
 
 
@@ -343,17 +343,17 @@ WRAPPED_TEXT_line2 */
 
                 `/* WRAPPED_TEXT
                   * WRAPPED_TEXT_line2
-                 */^
+                  */^
 
                 a /* WRAPPED_TEXT
                    * WRAPPED_TEXT_line2
-                 */
+                   */
 
 
     /*  -------------commentDoc--------------- */
     /* `$CL^`$CM^                              */
-    /* `$_xCommentMidIndent$CM `cursor^        */
-    /* `$_xCommentMidIndent$CR^                */
+    /* `$_xOFFSET^`$CM_OFFSET$CM `cursor^      */
+    /* `$_xOFFSET^`$CM_OFFSET$CR^              */
 
 
 
@@ -368,14 +368,14 @@ WRAPPED_TEXT_line2 */
                  */ b
 
                 `/**
-                 * WRAPPED_TEXT
-                 * WRAPPED_TEXT_line2
-                 */^
+                  * WRAPPED_TEXT
+                  * WRAPPED_TEXT_line2
+                  */^
 
                 a /**
-                 * WRAPPED_TEXT
-                 * WRAPPED_TEXT_line2
-                 */
+                   * WRAPPED_TEXT
+                   * WRAPPED_TEXT_line2
+                   */
 
 
     /*  -------------commentLine--------------- */
@@ -788,10 +788,10 @@ fprintf( stream_TYPED, "pattern_TYPED" ) b
 a fprintf( stream, "pattern" )
 
 
-    /*  -------------fun---------------                                                       */
-    /* `c_fun_type_indent()^`int^`c_fun_body_indent()^`name^(`$SParg`param?`$SParg^)`$BRfun^{ */
-    /*     `cursor^                                                                           */
-    /* }                                                                                      */
+    /*  -------------fun---------------                                        */
+    /* `c_fun_type_indent()^`int^`c_fun_body_indent()^`name^(`param^)`$BRfun^{ */
+    /*     `cursor^                                                            */
+    /* }                                                                       */
 
 
 
@@ -802,7 +802,7 @@ name()
 }
 
     int_TYPED
-name_TYPED( param_TYPED )
+name_TYPED(param_TYPED)
 {
     
 } b
@@ -881,13 +881,13 @@ if ( condition ) {
     
 }
 else if ( condition ) {
-    /* cursor */
+    
 }
 else if ( condition ) {
-    /* cursor */
+    
 }
 else if ( condition ) {
-    /* cursor */
+    
 }
 
 if ( condition_TYPED ) {
@@ -898,26 +898,26 @@ if ( condition_TYPED ) {
     
 }
 else if ( condition ) {
-    /* cursor */
+    
 }
 else if ( condition ) {
-    /* cursor */
+    
 }
 else if ( condition ) {
-    /* cursor */
+    
 }^
 
 a if ( condition ) {
     
 }
 else if ( condition ) {
-    /* cursor */
+    
 }
 else if ( condition ) {
-    /* cursor */
+    
 }
 else if ( condition ) {
-    /* cursor */
+    
 }
 
 
@@ -999,45 +999,45 @@ a if ( NULL != var ) {
 }
 
 
-    /*  -------------main---------------                                                                       */
-    /* `c_fun_type_indent()^int`c_fun_body_indent()^main(`$SParg^int argc,`$SPop^char **argv`$SParg^)`$BRfun^{ */
-    /*     `cursor^                                                                                            */
-    /*     return 0;                                                                                           */
-    /* }                                                                                                       */
+    /*  -------------main---------------                                                 */
+    /* `c_fun_type_indent()^int`c_fun_body_indent()^main(int argc, char **argv)`$BRfun^{ */
+    /*     `cursor^                                                                      */
+    /*     return 0;                                                                     */
+    /* }                                                                                 */
 
 
 
     int
-main( int argc, char **argv )
+main(int argc, char **argv)
 {
     
     return 0;
 }
 
     int
-main( int argc, char **argv )
+main(int argc, char **argv)
 {
     
     return 0;
 } b
 
 `    int
-main( int argc, char **argv )
+main(int argc, char **argv)
 {
     
     return 0;
 }^
 
 a     int
-main( int argc, char **argv )
+main(int argc, char **argv)
 {
     
     return 0;
 }
 
 
-    /*  -------------malloc---------------                                                       */
-    /* (`type^int^*)malloc(`$SParg^sizeof(`$SParg^`type^`$SParg^)`$SPop^*`$SPop^`count^`$SParg^) */
+    /*  -------------malloc---------------               */
+    /* (`type^int^*)malloc( sizeof( `type^ ) * `count^ ) */
 
 
 
@@ -1050,8 +1050,8 @@ main( int argc, char **argv )
     a (int*)malloc( sizeof( int ) * count )
 
 
-    /*  -------------memcpy---------------                                                            */
-    /* memcpy(`$SParg^`dest^,`$SPop^`source^,`$SPop^sizeof(`type^int^)`$SPop^*`$SPop^`count^`$SParg^) */
+    /*  -------------memcpy---------------                      */
+    /* memcpy( `dest^, `source^, sizeof(`type^int^) * `count^ ) */
 
 
 
@@ -1064,8 +1064,8 @@ main( int argc, char **argv )
     a memcpy( dest, source, sizeof(int) * count )
 
 
-    /*  -------------memset---------------                                                                              */
-    /* memset(`$SParg^`buffer^,`$SPop^`what^0^,`$SPop^sizeof(`$SParg^`type^int^`$SParg^)`$SPop^*`$SPop^`count^`$SParg^) */
+    /*  -------------memset---------------                          */
+    /* memset( `buffer^, `what^0^, sizeof( `type^int^ ) * `count^ ) */
 
 
 
@@ -1094,12 +1094,12 @@ WRAPPED_TEXT
 WRAPPED_TEXT_line2
 #endif /* __TEST_PAGE__ */
 
-#ifndef symbol_TYPED
-#     define symbol_TYPED
+#ifndef SYMBOL_TYPED
+#     define SYMBOL_TYPED
 
 WRAPPED_TEXT
 WRAPPED_TEXT_line2
-#endif /* symbol_TYPED */ b
+#endif /* SYMBOL_TYPED */ b
 
 `#ifndef __TEST_PAGE__
 #     define __TEST_PAGE__
@@ -1216,6 +1216,20 @@ a switch ( var ) {
         WRAPPED_TEXT_line2
         break;
 }
+
+
+    /*  -------------Time--------------- */
+    /* `time()^                          */
+
+
+
+23:37:51
+
+23:37:51 b
+
+`23:37:51^
+
+a 23:37:51
 
 
     /*  -------------while---------------                   */
@@ -1346,4 +1360,3 @@ WRAPPED_TEXT_line2}^
 
 a {WRAPPED_TEXT
 WRAPPED_TEXT_line2}
-
