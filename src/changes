@@ -1,2 +1,3 @@
-"hint=" is no more supported, use quote '"' to define tips.
+"hint=" in snippet definition head is no more supported, use quote '"' to define tips.
 
+"keyword=" in snippet file declaration is no more needed. keyword char can now be auto detected.
