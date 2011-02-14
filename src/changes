@@ -1,3 +1,12 @@
-"hint=" in snippet definition head is no more supported, use quote '"' to define tips.
+"hint=" in snippet head is no more supported, use quote '"' to define tips.
 
 "keyword=" in snippet file declaration is no more needed. keyword char can now be auto detected.
+
+priority value changed. 
+
+"wrap=" in snippet head simplified.
+
+
+import from master, b:_xpeval utilizing
+
+changes of RedefinePattern from master
