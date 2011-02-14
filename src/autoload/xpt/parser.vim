@@ -678,19 +678,10 @@ fun! s:keytypeHandler.post( setting, cmdArgs ) "{{{
 
     let [ kn, kt, val ] = a:cmdArgs
 
+    " TODO not good, use another keytype to define 'buildIfNoChange' post filter
+    let val = xpt#ph#AlterFilterByPHName( kn, val )
 
-    if kn =~ '\V...'
-        " TODO not good, use another keytype to define 'buildIfNoChange' post filter
-        "
-        " first line is indent : empty indent
-        let a:setting.postFilters[ kn ] =
-              \ xpt#flt#NewSimple( 0, 'BuildIfNoChange(' . string( val ) . ')' )
-
-    else
-        " first line is indent : empty indent
-        let a:setting.postFilters[ kn ] = xpt#flt#NewSimple( 0, val )
-
-    endif
+    let a:setting.postFilters[ kn ] = xpt#flt#NewSimple( 0, val )
 
 endfunction "}}}
 

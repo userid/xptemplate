@@ -131,9 +131,13 @@ fun! xpt#ph#New( snipObject, pieces ) "{{{
     "       See XPTupdateTyping()
     let ftype = len( a:pieces ) - iFilter > 2 ? 'postFilter' : 'liveFilter'
 
-    let a:pieces[ iFilter ].text = a:pieces[ iFilter ].text[ 1: ]
+    let fltPart = copy( a:pieces[ iFilter ] )
+    let fltPart.text = fltPart.text[ 1: ]
 
-    let flt = xpt#ph#CreatePHEltFilter( a:snipObject, a:pieces[ iFilter ] )
+    let fltPart.text =  xpt#ph#AlterFilterByPHName( ph.name, fltPart.text )
+
+
+    let flt = xpt#ph#CreatePHEltFilter( a:snipObject, fltPart )
 
 
     " " non-function liveFilter is treated as on-focus filter and is only applied once 
@@ -254,7 +258,20 @@ fun! xpt#ph#CreatePHEltFilter( snipObject, elt ) "{{{
     let val = xpt#util#UnescapeChar( a:elt.text, a:snipObject.ptn.lr )
 
     return xpt#flt#New( -a:elt.nIndent, val )
-    
+
+endfunction "}}}
+
+fun! xpt#ph#AlterFilterByPHName( phname, fltText ) "{{{
+
+    if a:phname =~ '\V...\$'
+
+        let a:fltText = xpt#util#UnescapeChar( a:fltText, '$({' )
+        return 'BuildIfNoChange(' . string( a:fltText ) . ')'
+
+    endif
+
+    return a:fltText
+
 endfunction "}}}
 
 let &cpo = s:oldcpo
