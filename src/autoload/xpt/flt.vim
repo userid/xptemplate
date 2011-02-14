@@ -60,13 +60,6 @@ endfunction "}}}
 
 fun! xpt#flt#Eval( flt, container, context ) "{{{
 
-    " if a:flt.rc != -1
-    "     call XPT#warn( 'Evaluate a flt already evaluated:' . string( a:flt ) )
-    "     return
-    " endif
-
-    " let a:flt.rc = 1
-
     let a:flt.rst = { 'rc' : 1, 'context' : a:context }
 
     let rst = xpt#eval#Eval( a:flt.text, a:container, a:context )
@@ -103,7 +96,7 @@ fun! xpt#flt#Eval( flt, container, context ) "{{{
         endif
 
     else
-        call XPT#warn( 'Unknow type of eval-result:' . string( rst ) )
+        call XPT#info( 'Unknow type of eval-result:' . string( rst ) )
     endif
 
 

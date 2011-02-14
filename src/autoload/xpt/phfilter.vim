@@ -228,7 +228,7 @@ fun! xpt#phfilter#HandleEltFilterRst( fctx, flt ) "{{{
             let a:fctx.ph[ a:fctx.key ] = frst.text
             return s:GOON
         else
-            call XPT#warn( 'Failed to pre-eval filter: ' . string( frst ) . ' filter=' . string( a:flt.text ) )
+            call XPT#info( 'Failed to pre-eval filter: ' . string( frst ) . ' filter=' . string( a:flt.text ) )
             return s:UNDONE
         endif
 

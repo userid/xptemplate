@@ -306,7 +306,7 @@ fun! xpt#snip#ParseInclusionStatement( so, statement ) "{{{
         try
             let params = eval( paramStr )
         catch /.*/
-            XPT#warn( 'XPT: Invalid parameter: ' . string( paramStr ) . ' Error=' . v:exception )
+            XPT#info( 'XPT: Invalid parameter: ' . string( paramStr ) . ' Error=' . v:exception )
         endtry
 
 

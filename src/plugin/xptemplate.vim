@@ -217,7 +217,7 @@ let s:pumCB = {}
 
 fun! s:pumCB.onEmpty(sess) "{{{
     if g:xptemplate_fallback ==? '<NOP>'
-        call XPT#warn( "XPT: No snippet matches" )
+        call XPT#info( "XPT: No snippet matches" )
         return ''
     else
         let x = b:xptemplateData
@@ -1903,7 +1903,7 @@ fun! s:ApplyBuildTimeInclusion( placeHolder, nameInfo, valueInfo ) "{{{
     let [ incName, params ] = xpt#snip#ParseInclusionStatement( renderContext.snipObject, placeHolder.include )
 
     if !has_key( tmplDict, incName )
-        call XPT#warn( "unknown inclusion :" . incName )
+        call XPT#info( "unknown inclusion :" . incName )
         return
     endif
 
@@ -2427,7 +2427,7 @@ fun! s:ExtractOneItem() "{{{
     let renderContext.item = item
 
     if empty( item.placeHolders ) && item.keyPH == s:nullDict
-        call XPT#warn( "item without placeholders!" )
+        call XPT#info( "item without placeholders!" )
         return s:nullDict
     endif
 
@@ -3404,7 +3404,7 @@ fun! s:Crash(...) "{{{
     let x.renderContext = xpt#rctx#New( x )
     call XPMflushWithHistory()
 
-    call XPT#warn( msg )
+    call XPT#info( msg )
 
     call s:CallPlugin( 'finishAll', 'after' )
 
@@ -3589,7 +3589,7 @@ fun! s:UpdateMarksAccordingToLeaderChanges( renderContext ) "{{{
             " TODO better hint
             " TODO allow user to move?
 
-            call XPT#warn( "editing OUTSIDE place holder is not allowed whne g:xptemplate_strict=1, use " . g:xptemplate_goback . " to go back" )
+            call XPT#info( "editing OUTSIDE place holder is not allowed whne g:xptemplate_strict=1, use " . g:xptemplate_goback . " to go back" )
 
             return g:XPT_RC.canceled
 
