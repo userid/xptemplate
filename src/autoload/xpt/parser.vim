@@ -413,6 +413,15 @@ fun! s:AssignSnipFT( filename ) "{{{
         " All cross filetype inclusions must be done with XPTinclude or
         " XPTembed.
         " But 'runtime' command is not allowed for inclusion or embed
+        "
+        " Unless it is a pseudo filename, which is for loading "_common"(or
+        " anything independent ) snippet into unsupported filetype.
+
+
+        if filename =~ '\V\<pseudo\>/'
+            return ftFolder
+        endif
+
 
         if &filetype =~ '\<' . ftFolder . '\>' " sub type like 'xpt.vim'
             let ft =  &filetype
