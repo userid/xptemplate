@@ -155,6 +155,7 @@ endfunction "}}}
 
 " TODO remove me: unclear statement
 fun! xpt#rctx#AddPHToGroup( rctx, ph ) "{{{
+    throw "do not use me any more"
     " anonymous g with empty name '' will never been added to a:rctx.itemDict
 
     let g = xpt#rctx#GetGroup( a:rctx, a:ph.name )
@@ -174,10 +175,13 @@ fun! xpt#rctx#GetGroup( rctx, name ) "{{{
 
     else
 
-        let g = xpt#group#New( a:name )
-        call xpt#rctx#AddGroup( a:rctx, g )
+        let g = xpt#group#New( a:name, a:rctx.buildingSessionID )
 
     endif
+
+    " NOTE: No matter new or old, always try to add. during render-time,
+    " dynamically generated PH need to be resorted
+    call xpt#rctx#AddGroup( a:rctx, g )
 
     return g
 
@@ -187,12 +191,15 @@ fun! xpt#rctx#AddGroup( rctx, g ) "{{{
 
     let [rctx, g] = [ a:rctx, a:g ]
 
+    let exist = has_key( rctx.itemDict, g.name )
+
     if g.name != ''
         let rctx.itemDict[ g.name ] = g
     endif
 
     if rctx.phase != g:xptRenderPhase.rendering
         call add( rctx.firstList, g )
+        call filter( ctx.groupList, 'v:val isnot g' )
 
         call s:log.Log( 'group insert to the head of groupList:' . string( g ) )
         return
@@ -200,6 +207,9 @@ fun! xpt#rctx#AddGroup( rctx, g ) "{{{
     endif
 
     " rendering phase
+    if exist
+        return
+    endif
 
     if g.name == ''
 

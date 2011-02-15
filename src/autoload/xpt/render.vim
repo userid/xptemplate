@@ -121,7 +121,25 @@ fun! xpt#render#GenScreenDataOfPHs( render, phs ) "{{{
 
 endfunction "}}}
 
+" session is used to distinguish different building process
+let s:buildingSessionID = 0
+let s:buildingStack = []
+
 fun! xpt#render#BuildPHs( render, phs ) "{{{
+
+
+    " NOTE: This function can be called recursively in which case it is
+    " treated as a single procedure with a certain buildingSessionID.
+    "
+    " Different buildingSessionID means different building procedure, in which
+    " case order of groups and order of PHs are handled differently.
+
+    let s:buildingSessionID += empty( s:buildingStack )
+    call add( s:buildingStack, a:render )
+
+    let a:render.rctx.buildingSessionID = s:buildingSessionID
+
+
     if a:render.nSpaceToAdd != 0
         let phs = [ repeat( ' ', a:render.nSpaceToAdd ) ] + a:phs
     else
@@ -181,6 +199,8 @@ fun! xpt#render#BuildPHs( render, phs ) "{{{
         unlet ph
 
     endfor
+
+    call remove( s:buildingStack, -1 )
 
 endfunction "}}}
 
@@ -250,12 +270,18 @@ endfunction "}}}
 
 " endfunction "}}}
 
+
+
 fun! s:BuildPH( render, ph ) "{{{
 
     let [ rctx, ph ] = [ a:render.rctx, a:ph ]
 
     let g = xpt#rctx#GetGroup( rctx, ph.name )
-    call xpt#group#PushPH( g, a:ph )
+    if g.sessid == rctx.buildingSessionID
+        call xpt#group#PushPH( g, a:ph )
+    else
+        call xpt#group#PrependPH( g, a:ph )
+    endif
 
 
     call s:CreatePHMarkNames( rctx, g, ph )

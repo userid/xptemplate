@@ -20,7 +20,7 @@ let s:log = xpt#debug#Logger( 'warn' )
 exe XPT#importConst
 
 " TODO name and initValue should not be the same
-fun! xpt#group#New( name ) "{{{
+fun! xpt#group#New( name, sessid ) "{{{
 
     let g = { 'name'      : a:name,
           \'fullname'     : a:name,
@@ -30,12 +30,30 @@ fun! xpt#group#New( name ) "{{{
           \'placeHolders' : [],
           \'keyPH'        : s:nullDict,
           \'behavior'     : {},
+          \'sessid'       : a:sessid, 
           \}
 
     return g
 
 endfunction "}}}
 
+
+fun! xpt#group#PrependPH( g, ph ) "{{{
+
+    if has_key( a:ph, 'isKey' ) && a:g.keyPH != s:nullDict
+        unlet a:ph.isKey
+    endif
+
+    if has_key( a:ph, 'isKey' )
+        let a:g.keyPH = a:ph
+        let a:g.fullname = a:ph.fullname
+    else
+        call insert( a:g.placeHolders, a:ph )
+    endif
+
+    call s:log.Log( 'a:g built=' . string( a:g ) )
+
+endfunction "}}}
 
 fun! xpt#group#PushPH( g, ph ) "{{{
 
