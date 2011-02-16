@@ -160,7 +160,7 @@ fun! xpt#rctx#AddPHToGroup( rctx, ph ) "{{{
 
     let g = xpt#rctx#GetGroup( a:rctx, a:ph.name )
 
-    call xpt#group#PushPH( g, a:ph )
+    call xpt#group#InsertPH( g, a:ph, len( g.placeHolders ) )
 
     return g
 

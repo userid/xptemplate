@@ -282,9 +282,9 @@ fun! s:BuildPH( render, ph ) "{{{
 
     let g = xpt#rctx#GetGroup( rctx, ph.name )
     if g.sessid == rctx.buildingSessionID
-        call xpt#group#PushPH( g, a:ph )
+        call xpt#group#InsertPH( g, a:ph, len( g.placeHolders ) )
     else
-        call xpt#group#PrependPH( g, a:ph )
+        call xpt#group#InsertPH( g, a:ph, 0 )
     endif
 
 

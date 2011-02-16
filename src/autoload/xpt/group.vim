@@ -38,7 +38,7 @@ fun! xpt#group#New( name, sessid ) "{{{
 endfunction "}}}
 
 
-fun! xpt#group#PrependPH( g, ph ) "{{{
+fun! xpt#group#InsertPH( g, ph, where ) "{{{
 
     if has_key( a:ph, 'isKey' ) && a:g.keyPH != s:nullDict
         unlet a:ph.isKey
@@ -48,24 +48,7 @@ fun! xpt#group#PrependPH( g, ph ) "{{{
         let a:g.keyPH = a:ph
         let a:g.fullname = a:ph.fullname
     else
-        call insert( a:g.placeHolders, a:ph )
-    endif
-
-    call s:log.Log( 'a:g built=' . string( a:g ) )
-
-endfunction "}}}
-
-fun! xpt#group#PushPH( g, ph ) "{{{
-
-    if has_key( a:ph, 'isKey' ) && a:g.keyPH != s:nullDict
-        unlet a:ph.isKey
-    endif
-
-    if has_key( a:ph, 'isKey' )
-        let a:g.keyPH = a:ph
-        let a:g.fullname = a:ph.fullname
-    else
-        call add( a:g.placeHolders, a:ph )
+        call insert( a:g.placeHolders, a:ph, a:where )
     endif
 
     call s:log.Log( 'a:g built=' . string( a:g ) )
