@@ -123,7 +123,7 @@ endfunction "}}}
 
 " session is used to distinguish different building process
 let s:buildingSessionID = 0
-let s:buildingStack = []
+let s:renderStack = []
 
 fun! xpt#render#BuildPHs( render, phs ) "{{{
 
@@ -134,8 +134,12 @@ fun! xpt#render#BuildPHs( render, phs ) "{{{
     " Different buildingSessionID means different building procedure, in which
     " case order of groups and order of PHs are handled differently.
 
-    let s:buildingSessionID += empty( s:buildingStack )
-    call add( s:buildingStack, a:render )
+    if empty( s:renderStack )
+        " new building session
+        let s:buildingSessionID += 1
+        let a:render.rctx.itemDict = {}
+    endif
+    call add( s:renderStack, a:render )
 
     let a:render.rctx.buildingSessionID = s:buildingSessionID
 
@@ -200,7 +204,7 @@ fun! xpt#render#BuildPHs( render, phs ) "{{{
 
     endfor
 
-    call remove( s:buildingStack, -1 )
+    call remove( s:renderStack, -1 )
 
 endfunction "}}}
 
