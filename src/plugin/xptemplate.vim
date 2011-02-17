@@ -282,6 +282,8 @@ fun! XPTemplateKeyword( val ) "{{{
     let x.keywordList = split( substitute( join( x.keywordList, '' ), '\v(.)\1+', '\1', 'g' ), '\v\s*' )
 
 
+    let x.keyword = '\w\|\[' . escape( join( x.keywordList, '' ), needEscape ) . ']'
+
 endfunction "}}}
 
 fun! XPTemplatePriority(...) "{{{
