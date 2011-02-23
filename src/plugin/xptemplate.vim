@@ -769,6 +769,11 @@ endfunction "}}}
 " TODO xpt seize pum if something matches snippet name in normal pum.
 fun! XPTemplateStart(pos_unused_any_more, ...) " {{{
 
+    " (\W)
+    " (\W)(\w)(\W)
+    " (\names)(\ext)
+
+
     let action = ''
     " " TODO is it needed?
     " call XPTparseSnippets()
