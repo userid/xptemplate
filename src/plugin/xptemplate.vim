@@ -772,6 +772,8 @@ fun! XPTemplateStart(pos_unused_any_more, ...) " {{{
     " (\W)
     " (\W)(\w)(\W)
     " (\names)(\ext)
+    " dynamic: ( \names )( \ext )$
+    " static: search backward by dictionary defined
 
 
     let action = ''
