@@ -518,6 +518,18 @@ fun! XPTdefineSnippetInternal( name, setting, snip ) "{{{
 
 endfunction "}}}
 
+fun! s:UpdateNamePrefixDict( ftScope, name ) "{{{
+    if !has_key( a:ftScope, 'namePrefix' )
+        let a:ftScope.namePrefix = {}
+    endif
+
+    let [ n, pre ] = [ a:name, a:ftScope.namePrefix ]
+    while n != '' && !has_key( pre, n )
+        let pre[ n ] = 1
+        let n = n[ : -2 ]
+    endwhile
+endfunction "}}}
+
 " TODO parse snippets first
 fun! s:Abbr( name ) "{{{
     let name = a:name
@@ -930,10 +942,14 @@ fun! XPTemplateStart(pos_unused_any_more, ...) " {{{
         endif
 
 
-        let matched = matchstr( lineToCursor, '\V\%('. x.keyword . '\)\+\$' )
-        if matched =~ '\V\W\$'
-            let matched = matchstr( matched, '\V\W\+\$' )
-        endif
+        let ftScope = s:GetContextFTObj()
+        let pre = ftScope.namePrefix
+        let n = split( lineToCursor, '\s', 1 )[ -1 ]
+        while n != '' && !has_key( pre, n )
+            let n = substitute( n, '\V\^\w\+\|\^\W', '', '' )
+        endwhile
+        let matched = n
+
 
         if !has_key( opt, 'popupOnly' )
             if !isFullMaatching
