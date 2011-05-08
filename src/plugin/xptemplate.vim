@@ -2326,12 +2326,12 @@ endfunction "}}}
 
 
 fun! s:GotoNextItem() "{{{
-    let action = s:DoGotoNextItem()
+    let rc = s:DoGotoNextItem()
 
     " restore 'wrap'
-    call b:xptemplateData.settingWrap.Restore()
+    call xpt#stsw#Restore( b:xptemplateData.settingWrap )
 
-    return action
+    return b:xptemplateData.renderContext.userPostAction
 endfunction "}}}
 
 " TODO rename me
@@ -2717,7 +2717,7 @@ fun! s:FillinLeadingPlaceHolderAndSelect( ctx, str ) "{{{
     endif
 
 
-    call b:xptemplateData.settingWrap.Switch()
+    call xpt#stsw#Switch( b:xptemplateData.settingWrap )
     " set str to key place holder or the first normal place holder
     call XPreplace( start, end, str )
 
@@ -2883,7 +2883,7 @@ fun! s:ApplyDefaultValue() "{{{
 
     else
         " TODO change to return code
-        let rc = s:ApplyDefaultValueToPH( rctx, onfocus )
+        let rc = s:ApplyDefaultValueToPH( onfocus )
         return rctx.userPostAction
     endif
 
@@ -3173,8 +3173,8 @@ fun! s:XPTinitMapping() "{{{
     " \[ '&l:cinkeys', { 'exe' : 'setl cinkeys-=*<Return> | setl cinkeys-=o' } ],
 
     " provent horizontal scroll when putting raw snippet onto screen before building
-    let b:xptemplateData.settingWrap = g:SettingSwitch.New()
-    call b:xptemplateData.settingWrap.Add( '&l:wrap', '1' )
+    let b:xptemplateData.settingWrap = xpt#stsw#New()
+    call xpt#stsw#Add( b:xptemplateData.settingWrap, '&l:wrap', '1' )
 
 endfunction "}}}
 

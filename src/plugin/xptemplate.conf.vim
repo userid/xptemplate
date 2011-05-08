@@ -111,6 +111,8 @@ for s:path in g:xptemplate_snippet_folders
     let &runtimepath .= ',' . s:path
 endfor
 
+let g:XPT_PATH = s:path
+
 unlet s:path
 unlet s:filename
 

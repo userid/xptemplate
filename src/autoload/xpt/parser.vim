@@ -709,8 +709,10 @@ fun! s:HandleXSETcommand( setting, command, cmdArgs ) "{{{
     let kt = get( s:KEYTYPE_MAP, '.' . kt, kt )
 
 
+    let fcon = {}
     if has_key( s:stHandler, kn )
-        call s:stHandler[ kn ]( a:setting, [ kn, kt, val ] )
+        let fcon.f = s:stHandler[ kn ]
+        call fcon.f( a:setting, [ kn, kt, val ] )
 
     elseif has_key( s:KEYTYPE_TO_DICT, kt )
         let dicName = s:KEYTYPE_TO_DICT[ kt ]
@@ -720,7 +722,8 @@ fun! s:HandleXSETcommand( setting, command, cmdArgs ) "{{{
         let a:setting.variables[ kn ] = val
 
     elseif has_key( s:keytypeHandler, kt )
-        call s:keytypeHandler[ kt ]( a:setting, [ kn, kt, val ] )
+        let fcon.f = s:keytypeHandler[ kt ]
+        call fcon.f( a:setting, [ kn, kt, val ] )
 
     else
         throw "unknown key name or type:" . kn . ' ' . kt
