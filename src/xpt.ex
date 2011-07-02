@@ -9,20 +9,11 @@ case $1 in
         echo "vim -c \"XPTtestAll $langs\"" >test.bat
         exit
         ;;
-    tosvn)
-        rsync -Rrvc --delete \
-            --exclude=.git/ --exclude=.svn/ \
-            --exclude=dist-sub/ \
-            --exclude=.gitmodules \
-            --exclude=*.xpt.vimc \
-            --exclude-from=../.gitignore \
-            .././ \
-            ../../xptemplate.svn/trunk/./
-        exit
-        ;;
+
     "")
         echo "export"
         ;;
+
     *)
         echo "error"
         exit -1
@@ -30,82 +21,82 @@ case $1 in
 
 esac
 
+
 CurrentDir=$PWD
 ParentDir=${PWD%/*}
-ver=`cat VERSION`.`date +%y%m%d`
+githash=`git log --max-count=1 --format=%h`
+today=`date +%y%m%d`
+ver=`cat VERSION`.$today-$githash
+distname=dist.$tody-$githash
+
+compact() {
+    local file=$1
+
+    echo Join splitted lines
+    echo Remove Logs/Comments/Empty_Lines from $file
+
+    grep -v "call s:log.\(Log\|Debug\)(" $file |\
+        grep -v "^ *Assert " |\
+        grep -v "^ *\"" |\
+        grep -v "^ *$" |\
+        sed 's/" *{{{//; s/" *}}}//' |\
+        awk -f cleanspace.awk |\
+        awk -f joinlines.awk |\
+        awk -f formatindent.awk \
+        > .tmp
+
+    mv .tmp $file
+}
+
+create_tgz() {
+    rm -rf $ParentDir/xpt && cp -R . $ParentDir/xpt
+    cd $ParentDir/xpt && tar -czf ../xpt-$ver.tgz *
+}
 
 dodist () {
-    DistName=$1
-    DistDir=$ParentDir/$DistName
-    vim -c 'helptags doc|qa'
 
-    # remove old files those may not exist in src
-    cd $DistDir && find -name "*.vim" | xargs rm -f
-
-    cp -R $CurrentDir/* $DistDir/
+    git branch $distname && git checkout $distname || { echo "Failed to create branch $distname"; exit 1; }
 
 
-    cd $DistDir
-    rm -rf `cat $CurrentDir/$0 | awk '/^# __TO_REMOVE__/,/^# __TO_REMOVE__ END/{ if ( $1 != "#" ) print $0; }'`
+    cat $CurrentDir/$0 | awk '/^# __TO_REMOVE__/,/^# __TO_REMOVE__ END/{ if ( $1 != "#" ) print $0; }' | while read f; do git rm $f; done
+    git rm `find . -name "test.page*"`
 
-    find -name "test.page*" | xargs rm
 
-    for file in `find {plugin,autoload}/ -name "*.vim"`;do
-
-        if [[ $file == "debug.vim" ]];then
-            continue
-        fi
-
-        echo Join splitted lines
-        echo Remove Logs/Comments/Empty_Lines from $file
-
-        grep -v "call s:log.\(Log\|Debug\)(" $file |\
-            grep -v "^\s*Assert " |\
-            grep -v "^\s*\"" |\
-            grep -v "^\s*$" |\
-            sed 's/"\s*{{{//; s/"\s*}}}//' |\
-            awk -f cleanspace.awk |\
-            awk -f joinlines.awk |\
-            awk -f formatindent.awk \
-            > .tmp
-
-        mv .tmp $file
+    for file in `find {plugin,autoload}/ -name *.vim | grep -v "/debug\.vim$"`;do
+        compact $file
     done
 
 
-    cd $DistDir
-    cat > __ <<-END
+    mv plugin/xptemplate.vim .tmp
+    cat > plugin/xptemplate.vim <<-END
 	" GetLatestVimScripts: 2611 1 :AutoInstall: xpt.tgz
 	" VERSION: $ver
 	END
-    cat $DistDir/plugin/xptemplate.vim >> __
-    mv __ $DistDir/plugin/xptemplate.vim
+    cat .tmp >> plugin/xptemplate.vim && rm .tmp
 
+    git commit -a -m "$distname"
 
-    cd $ParentDir
-    rm -rf xpt
-    cp -R $DistName xpt
-
-    cd xpt
-    tar -czf ../xpt-$ver.tgz *
+    create_tgz
     cd $CurrentDir
+
+
+    git branch dist
+    git merge -s ours dist
+
+    git co dist && git merge $distname
+
 }
 
-dodist dist
-dodist dist-sub
-
-
-
-
+dodist
 exit
 
 # __TO_REMOVE__
+xpt.ex
 plugin/xptemplateTest.vim
 plugin/xptTestKey.vim
 plugin/xptemplate.importer.vim
 *.awk	\
 xpt.testall.*
-xpt.ex
 genfile.vim
 doc/tags
 xpt.files.txt
