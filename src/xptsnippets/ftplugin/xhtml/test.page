@@ -109,20 +109,6 @@ a `WRAPPED_TEXT
 WRAPPED_TEXT_line2`
 
 
-    <!--  -------------a--------------- -->
-    <!-- <a href="`href^">`cursor^</a>  -->
-
-
-
-    <a href="href"></a>
-
-    <a href="href_TYPED"></a> b
-
-    `<a href="href"></a>^
-
-    a <a href="href"></a>
-
-
     <!--  -------------Author--------------- -->
     <!-- `$author^                           -->
 
@@ -135,6 +121,20 @@ WRAPPED_TEXT_line2`
     `drdr.xp^
 
     a drdr.xp
+
+
+    <!--  -------------a--------------- -->
+    <!-- <a href="`href^">`cursor^</a>  -->
+
+
+
+    <a href="href"></a>
+
+    <a href="href_TYPED"></a> b
+
+    `<a href="href"></a>^
+
+    a <a href="href"></a>
 
 
     <!--  -------------body--------------- -->
@@ -572,6 +572,48 @@ a <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.
 </html>
 
 
+    <!--  -------------ibutton---------------                                   -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="button" name="name" value="value" />
+
+    <input type="button" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="button" name="name" value="value" />^
+
+    a <input type="button" name="name" value="value" />
+
+
+    <!--  -------------icheckbox---------------                                 -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="checkbox" name="name" value="value" />
+
+    <input type="checkbox" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="checkbox" name="name" value="value" />^
+
+    a <input type="checkbox" name="name" value="value" />
+
+
+    <!--  -------------ifile---------------                                     -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="file" name="name" value="value" />
+
+    <input type="file" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="file" name="name" value="value" />^
+
+    a <input type="file" name="name" value="value" />
+
+
     <!--  -------------iframe---------------                                           -->
     <!-- <`$_xSnipName^` `att?^>`content^^`content^html_cont_helper()^</`$_xSnipName^> -->
 
@@ -584,6 +626,34 @@ a <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.
     `<iframe name="name"></iframe>^
 
     a <iframe name="name"></iframe>
+
+
+    <!--  -------------ihidden---------------                                   -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="hidden" name="name" value="value" />
+
+    <input type="hidden" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="hidden" name="name" value="value" />^
+
+    a <input type="hidden" name="name" value="value" />
+
+
+    <!--  -------------iimage---------------                                    -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="image" name="name" value="value" />
+
+    <input type="image" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="image" name="name" value="value" />^
+
+    a <input type="image" name="name" value="value" />
 
 
     <!--  -------------img--------------- -->
@@ -614,6 +684,76 @@ a <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.
     a <input type="text" name="name" value="value"/>
 
 
+    <!--  -------------ipassword---------------                                 -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="password" name="name" value="value" />
+
+    <input type="password" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="password" name="name" value="value" />^
+
+    a <input type="password" name="name" value="value" />
+
+
+    <!--  -------------iradio---------------                                    -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="radio" name="name" value="value" />
+
+    <input type="radio" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="radio" name="name" value="value" />^
+
+    a <input type="radio" name="name" value="value" />
+
+
+    <!--  -------------ireset---------------                                    -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="reset" name="name" value="value" />
+
+    <input type="reset" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="reset" name="name" value="value" />^
+
+    a <input type="reset" name="name" value="value" />
+
+
+    <!--  -------------isubmit---------------                                   -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="submit" name="name" value="value" />
+
+    <input type="submit" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="submit" name="name" value="value" />^
+
+    a <input type="submit" name="name" value="value" />
+
+
+    <!--  -------------itext---------------                                     -->
+    <!-- <input type="`Echo($_xSnipName[1:])^" name="`name^" value="`value^" /> -->
+
+
+
+    <input type="text" name="name" value="value" />
+
+    <input type="text" name="name_TYPED" value="value_TYPED" /> b
+
+    `<input type="text" name="name" value="value" />^
+
+    a <input type="text" name="name" value="value" />
+
+
     <!--  -------------label---------------                                            -->
     <!-- <`$_xSnipName^` `att?^>`content^^`content^html_cont_helper()^</`$_xSnipName^> -->
 
@@ -628,20 +768,6 @@ a <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.
     a <label for="which"></label>
 
 
-    <!--  -------------li---------------                                       -->
-    <!-- <`$_xSnipName^>`content^^`content^html_cont_helper()^</`$_xSnipName^> -->
-
-
-
-    <li></li>
-
-    <li>content_TYPED</li> b
-
-    `<li></li>^
-
-    a <li></li>
-
-
     <!--  -------------link---------------                               -->
     <!-- <link rel="`stylesheet^" type="`type^text/css^" href="`url^" /> -->
 
@@ -654,6 +780,20 @@ a <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.
     `<link rel="stylesheet" type="text/css" href="url" />^
 
     a <link rel="stylesheet" type="text/css" href="url" />
+
+
+    <!--  -------------li---------------                                       -->
+    <!-- <`$_xSnipName^>`content^^`content^html_cont_helper()^</`$_xSnipName^> -->
+
+
+
+    <li></li>
+
+    <li>content_TYPED</li> b
+
+    `<li></li>^
+
+    a <li></li>
 
 
     <!--  -------------meta---------------                    -->

@@ -1312,6 +1312,10 @@ fun! s:AdjustIndentAt( text, startPos ) "{{{
 
     return s:AddIndent( a:text, nIndent )
 
+    let baseIndent = repeat( " ", a:nIndent )
+
+    return substitute(a:text, '\n', '&' . baseIndent, 'g')
+    
 endfunction "}}}
 
 fun! s:AddIndent( text, nIndent ) "{{{
