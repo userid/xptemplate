@@ -77,15 +77,20 @@ fun! xpt#rctx#New( x ) "{{{
           \   'lastContent'        : '',
           \   'tmpmappings'        : { 'saver' : xpt#msvr#New( 1 ), 'keys' : {} },
           \   'oriIndentkeys'      : {},
+          \   'leadingCharToReindent' : {},
           \ }
 
     " for emulation of 'indentkeys'
     let indentkeysList = split( &indentkeys, ',' )
-    call filter( indentkeysList, 'v:val=~''\V\^0=''' )
+    call filter( indentkeysList, 'v:val=~''\V\^0''' )
     for k in indentkeysList
 
         " "0=" is not included
-        let inst.oriIndentkeys[ k[ 2: ] ] = 1
+        if k[ 1 ] == '='
+            let inst.oriIndentkeys[ k[ 2: ] ] = 1
+        else
+            let inst.leadingCharToReindent[ k[ 1: ] ] = 1
+        endif
     endfor
 
     return inst
