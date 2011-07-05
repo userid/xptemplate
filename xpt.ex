@@ -49,7 +49,7 @@ compact() {
 }
 
 create_tgz() {
-    rm -rf $ParentDir/xpt && cp -R . $ParentDir/xpt
+    rm -rf $ParentDir/xpt && mkdir $ParentDir/xpt && cp -R ./* $ParentDir/xpt/
     cd $ParentDir/xpt && tar -czf ../xpt-$ver.tgz *
 }
 
@@ -60,6 +60,7 @@ dodist () {
 
     cat $CurrentDir/$0 | awk '/^# __TO_REMOVE__/,/^# __TO_REMOVE__ END/{ if ( $1 != "#" ) print $0; }' | while read f; do git rm $f; done
     git rm `find . -name "test.page*"`
+    rm `find . -name "*.xpt.vimc"`
 
 
     for file in `find {plugin,autoload}/ -name *.vim | grep -v "/debug\.vim$"`;do
