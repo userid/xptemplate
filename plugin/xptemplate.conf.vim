@@ -42,6 +42,7 @@ call XPT#default('g:xptemplate_fallback'	, '<Plug>XPTrawKey' )
 call XPT#default('g:xptemplate_fallback_condition'	, '\V\c<Tab>' )
 " doc it
 call XPT#default('g:xptemplate_move_even_with_pum'	, g:xptemplate_nav_next !=? '<Tab>' )
+call XPT#default('g:xptemplate_break_undo'	, 0 )
 call XPT#default('g:xptemplate_always_show_pum'	, 0 )
 call XPT#default('g:xptemplate_minimal_prefix'	, 1 )
 call XPT#default('g:xptemplate_pum_tab_nav'	, 0 )
@@ -144,6 +145,9 @@ let g:XPTmappings = {
       \                     : "<C-c>`>i<C-r>=XPTemplateStart(0,{'k':'%s'})<cr>",
       \ }
 
+if g:xptemplate_break_undo
+    let g:XPTmappings.trigger = "<C-g>u" . g:XPTmappings.trigger
+endif
 
 if g:xptemplate_fallback =~ '\V\^nore:'
     let g:xptemplate_fallback = g:xptemplate_fallback[ 5: ]
